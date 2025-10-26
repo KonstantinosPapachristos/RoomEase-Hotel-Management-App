@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.roomease.StatisticsDashboardController"
+           style="-fx-background-color: #2b4b2e;">
+    <!-- Main Scroll Pane -->
+    <ScrollPane fitToWidth="true" fitToHeight="true" prefHeight="900" maxHeight="Infinity" style="-fx-background-color: #2b4b2e;">
+        <StackPane alignment="CENTER" style="-fx-background-color: #2b4b2e;">
+            <!-- Main Wrapper -->
+            <VBox alignment="CENTER" spacing="30" maxWidth="800" style="-fx-padding: 20; -fx-background-color: #2b4b2e;">
+
+                <!-- Title Section -->
+                <VBox alignment="CENTER"
+                      style="-fx-border-color: transparent; -fx-border-width: 2; -fx-border-radius: 5; -fx-padding: 15; -fx-spacing: 10;">
+                    <Label text="Statistics" style="-fx-font-size: 36px; -fx-text-fill: #1f3b1d; -fx-font-weight: bold;" />
+                </VBox>
+
+                <!-- Combined Revenue Section -->
+                <VBox alignment="CENTER"
+                      style="-fx-border-color: #1e3920; -fx-border-width: 2; -fx-border-radius: 5; -fx-padding: 20; -fx-spacing: 20;">
+                    <!-- Total Revenue -->
+                    <VBox alignment="CENTER" spacing="10">
+                        <Label text="Total Revenue" style="-fx-font-size: 18px; -fx-text-fill: white;" />
+                        <Label fx:id="totalRevenueLabel" text="Total Revenue: $0.00"
+                               style="-fx-font-size: 20px; -fx-text-fill: #ffffff; -fx-font-weight: bold;" />
+                    </VBox>
+
+                    <!-- Monthly Revenue -->
+                    <VBox alignment="CENTER" spacing="10">
+                        <HBox alignment="CENTER" spacing="20">
+                            <Label text="Select Month:" style="-fx-font-size: 18px; -fx-text-fill: white;" />
+                            <ComboBox fx:id="monthComboBox" style="-fx-background-color: #ffffff; -fx-pref-width: 150;" />
+                        </HBox>
+                        <Button text="Calculate Monthly Revenue" fx:id="calculateRevenueButton"
+                                onAction="#handleCalculateMonthlyRevenue"
+                                style="-fx-background-color: #1f3b1d; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 10 20;" />
+                        <Label fx:id="monthlyRevenueLabel" text="Monthly Revenue: $0.00"
+                               style="-fx-font-size: 20px; -fx-text-fill: white;" />
+                    </VBox>
+                </VBox>
+
+                <VBox spacing="15" style="-fx-background-color: #254b2b; -fx-padding: 20; -fx-border-color: #1f3b1d; -fx-border-width: 2;">
+                    <!-- Total and Monthly Bookings Section -->
+                    <VBox spacing="15">
+                        <!-- Total Bookings -->
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="Total Bookings:" style="-fx-text-fill: white; -fx-font-size: 18px;" />
+                            <Label fx:id="totalBookingsLabel" text="0" style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;" />
+                        </HBox>
+
+                        <!-- Monthly Bookings -->
+                        <VBox spacing="10">
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Label text="Select Month:" style="-fx-text-fill: white; -fx-font-size: 18px;" />
+                                <ComboBox fx:id="monthComboBox" promptText="Month" style="-fx-font-size: 14px;" />
+                                <ComboBox fx:id="yearComboBox" promptText="Year" style="-fx-font-size: 14px;" />
+                            </HBox>
+                            <Button text="Show Monthly Bookings" onAction="#handleShowMonthlyBookings" style="-fx-background-color: #1f3b1d; -fx-text-fill: white;" />
+                            <Label fx:id="monthlyBookingsLabel" text="Monthly Bookings: 0" style="-fx-text-fill: white; -fx-font-size: 18px;" />
+                        </VBox>
+
+                        <!-- Month with Most Bookings -->
+                        <VBox spacing="10">
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Label text="Select Year:" style="-fx-text-fill: white; -fx-font-size: 18px;" />
+                                <ComboBox fx:id="yearComboBoxForMostBookings" promptText="Year" style="-fx-font-size: 14px;" />
+                            </HBox>
+                            <Button text="Find Month with Most Bookings" onAction="#handleMostBookings" style="-fx-background-color: #1f3b1d; -fx-text-fill: white;" />
+                            <Label fx:id="mostBookingsLabel" text="Most Bookings: None" style="-fx-text-fill: white; -fx-font-size: 18px;" />
+                        </VBox>
+                    </VBox>
+                </VBox>
+
+                <VBox spacing="40" prefHeight="800" style="-fx-background-color: #2b4b2e; -fx-padding: 40;" alignment="CENTER">
+                    <Label text="User Reviews" style="-fx-font-size: 24px; -fx-text-fill: white;" />
+
+                    <!-- Review 1 -->
+                    <VBox spacing="20" style="-fx-background-color: #1f3b1d; -fx-padding: 20; -fx-border-color: #3a5d3a; -fx-border-width: 2;">
+                        <Label text="Giannis Papadopoulos" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" />
+                        <Label text="Rating: ★★★★☆" style="-fx-text-fill: gold; -fx-font-size: 16px;" />
+                        <Label text="Το δωμάτιο ήταν πεντακάθαρο και το προσωπικό πολύ εξυπηρετικό!"
+                               style="-fx-text-fill: white; -fx-font-size: 14px;" />
+                    </VBox>
+
+                    <!-- Review 2 -->
+                    <VBox spacing="20" style="-fx-background-color: #1f3b1d; -fx-padding: 20; -fx-border-color: #3a5d3a; -fx-border-width: 2;">
+                        <Label text="Eleni Kotsou" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" />
+                        <Label text="Rating: ★★★★★" style="-fx-text-fill: gold; -fx-font-size: 16px;" />
+                        <Label text="Υπέροχη εμπειρία! Λάτρεψα το πρωινό και την πισίνα."
+                               style="-fx-text-fill: white; -fx-font-size: 14px;" />
+                    </VBox>
+
+                    <!-- Review 3 -->
+                    <VBox spacing="20" style="-fx-background-color: #1f3b1d; -fx-padding: 20; -fx-border-color: #3a5d3a; -fx-border-width: 2;">
+                        <Label text="Andreas Petrou" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" />
+                        <Label text="Rating: ★★★★☆" style="-fx-text-fill: gold; -fx-font-size: 16px;" />
+                        <Label text="Καλή σχέση ποιότητας-τιμής. Το σπα ήταν πολύ χαλαρωτικό και το προσωπικό φιλικό."
+                               style="-fx-text-fill: white; -fx-font-size: 14px;" />
+                    </VBox>
+
+                    <!-- Review 4 -->
+                    <VBox spacing="10" style="-fx-background-color: #1f3b1d; -fx-padding: 10; -fx-border-color: #3a5d3a; -fx-border-width: 2;">
+                        <Label text="Maria Nikolaou" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" />
+                        <Label text="Rating: ★★★☆☆" style="-fx-text-fill: gold; -fx-font-size: 16px;" />
+                        <Label text="Καλή διαμονή συνολικά, αλλά το Wi-Fi θα μπορούσε να είναι πιο γρήγορο."
+                               style="-fx-text-fill: white; -fx-font-size: 14px;" />
+                    </VBox>
+
+                    <!-- Review 5 -->
+                    <VBox spacing="10" style="-fx-background-color: #1f3b1d; -fx-padding: 10; -fx-border-color: #3a5d3a; -fx-border-width: 2;">
+                        <Label text="Kostas Dimitriou" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" />
+                        <Label text="Rating: ★★★★★" style="-fx-text-fill: gold; -fx-font-size: 16px;" />
+                        <Label text="Όλα ήταν τέλεια! Το προσωπικό έκανε τα πάντα για να κάνουν τη διαμονή μας αξέχαστη."
+                               style="-fx-text-fill: white; -fx-font-size: 14px;" />
+                    </VBox>
+                </VBox>
+                <!-- Return to Dashboard Section -->
+                <VBox alignment="CENTER"
+                      style="-fx-border-color: transparent; -fx-border-width: 2; -fx-border-radius: 5; -fx-padding: 15; -fx-spacing: 10;">
+                    <Button text="Return to Dashboard" fx:id="returnButton" onAction="#returnToDashboard"
+                            style="-fx-background-color: #8B0000; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 10 20;" />
+                </VBox>
+            </VBox>
+        </StackPane>
+    </ScrollPane>
+</StackPane>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.roomease.ManagerDashboardController"
+            fitToWidth="true" style="-fx-background-color: #2b4b2e;">
+    <content>
+        <VBox alignment="CENTER" spacing="20" style="-fx-background-color: #2b4b2e;" prefWidth="800">
+            <!-- Dashboard Title -->
+            <Label text="Manager Dashboard" style="-fx-font-size: 36px; -fx-text-fill: #1f3b1d;" />
+
+            <!-- Room Occupancy Section -->
+            <Label text="Current Room Occupancy" style="-fx-font-size: 24px; -fx-text-fill: #1f3b1d;" />
+            <TextArea fx:id="roomOccupancySummary" editable="false" maxWidth="400" maxHeight="400" />
+            <Button text="Load Occupancy Summary" onAction="#loadRoomOccupancySummary" />
+
+            <Label text="Room Status" style="-fx-font-size: 24px; -fx-text-fill: #1f3b1d;" />
+            <HBox alignment="CENTER" spacing="15" style="-fx-padding: 10;">
+                <Button text="Set to Cleaning" onAction="#setStatusCleaning" />
+                <Button text="Set to Maintenance" onAction="#setStatusMaintenance" />
+                <Button text="Set to Ready" onAction="#setStatusReady" />
+            </HBox>
+                <TableView fx:id="roomStatusTable" style="-fx-background-color: #3a5d3a; -fx-text-fill: white;" maxWidth="200">
+                    <columns>
+                        <TableColumn text="Room Number" fx:id="roomNumberColumn" />
+                        <TableColumn text="Status" fx:id="statusColumn" />
+                    </columns>
+                </TableView>
+
+
+            <!-- Revenue Report Section -->
+            <Label text="Revenue Report" style="-fx-font-size: 24px; -fx-text-fill: #1f3b1d;" />
+            <HBox alignment="CENTER" spacing="15">
+                <DatePicker fx:id="startDatePicker" promptText="Start Date"/>
+                <DatePicker fx:id="endDatePicker" promptText="End Date"/>
+                <Button text="Generate Report" fx:id="generateReportButton" onAction="#generateReport"
+                        style="-fx-background-color: #1f3b1d; -fx-text-fill: white;" maxWidth="150"/>
+            </HBox>
+
+            <!-- Hotel Statistics Section -->
+            <Label text="Hotel Statistics" style="-fx-font-size: 24px; -fx-text-fill: #1f3b1d;" />
+            <Button text="View Statistics" fx:id="viewStatisticsButton" onAction="#viewStatistics"
+                    style="-fx-background-color: #1f3b1d; -fx-text-fill: white;" maxWidth="150"/>
+
+            <!-- Booking Controls for Employee Functions -->
+            <Label text="Booking Controls" style="-fx-font-size: 24px; -fx-text-fill: #1f3b1d;" />
+            <HBox alignment="CENTER" spacing="15">
+                <Button text="New Booking" fx:id="newBookingButton" onAction="#openBookingForm"
+                        style="-fx-background-color: #1f3b1d; -fx-text-fill: white;" maxWidth="150" />
+                <Button text="Edit Booking" fx:id="editBookingButton" onAction="#editBooking"
+                        style="-fx-background-color: #1f3b1d; -fx-text-fill: white;" maxWidth="150" />
+                <Button text="Delete Booking" fx:id="deleteBookingButton" onAction="#deleteBooking"
+                        style="-fx-background-color: #8B0000; -fx-text-fill: white;" maxWidth="150" />
+                <Button text="Delete All Bookings" fx:id="deleteAllButton" onAction="#deleteAllBookings"
+                        style="-fx-background-color: #8B0000; -fx-text-fill: white;" maxWidth="150" />
+                <Button fx:id="generateReceiptButton" text="Generate Receipt" onAction="#generateReceipt"/>
+            </HBox>
+            <HBox alignment="CENTER" spacing="15" style="-fx-padding: 10;">
+                <DatePicker fx:id="startDatePicker" promptText="Start Date" />
+                <DatePicker fx:id="endDatePicker" promptText="End Date" />
+                <ComboBox fx:id="roomTypeFilterComboBox" promptText="Room Type" />
+                <Button text="Filter" onAction="#applyFilters" />
+                <Button text="Reset" onAction="#resetFilters" />
+            </HBox>
+            <TableView fx:id="bookingsTable" style="-fx-background-color: #3a5d3a; -fx-text-fill: white;" maxWidth="800">
+                <columns>
+                    <TableColumn fx:id="bookingIDColumn" text="Booking ID" prefWidth="100"/>
+                    <TableColumn fx:id="assignedRoomsColumn" text="Assigned Rooms" prefWidth="150"/>
+                    <TableColumn fx:id="customerNameColumn" text="Customer Name" prefWidth="150"/>
+                    <TableColumn fx:id="roomTypeColumn" text="Room Type" prefWidth="100"/>
+                    <TableColumn fx:id="bookingTypeColumn" text="Booking Type" prefWidth="100"/>
+                    <TableColumn fx:id="checkInDateColumn" text="Check-In Date" prefWidth="100"/>
+                    <TableColumn fx:id="checkOutDateColumn" text="Check-Out Date" prefWidth="100"/>
+                    <TableColumn fx:id="isGroupColumn" text="Is Group" prefWidth="80"/>
+                    <TableColumn fx:id="amountPaidColumn" text="Amount Paid" prefWidth="100"/>
+                    <TableColumn fx:id="totalAmountColumn" text="Total Amount" prefWidth="100"/>
+                </columns>
+            </TableView>
+
+            <!-- Logout Button -->
+            <Button text="Logout" fx:id="logoutButton" onAction="#handleLogout"
+                    style="-fx-background-color: #8B0000; -fx-text-fill: white;" maxWidth="100" />
+        </VBox>
+    </content>
+</ScrollPane>
