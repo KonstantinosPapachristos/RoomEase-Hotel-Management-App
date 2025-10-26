@@ -1,6 +1,6 @@
 ## 🏨 RoomEase — Hotel Management Application
 
-RoomEase is a hotel management desktop application developed in Java, using JavaFX and FXML for its user interface. It provides tools for managing rooms, reservations, and guest information, while supporting different access levels based on user roles.
+RoomEase is a hotel management desktop application developed in Java, utilizing JavaFX and FXML to deliver a clean and interactive user interface. The system provides functionality for managing room availability, reservations, and guest information through a structured dashboard environment. It incorporates role-based access control, offering distinct capabilities for managers and employees to ensure secure and efficient workflow. Room data and reservation records are persistently stored using an integrated SQLite database, enabling reliable data access across sessions. The application aims to streamline day-to-day hotel operations while demonstrating practical implementation of database integration, user role management, and modern desktop UI development.
 
 ---
 
